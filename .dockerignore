@@ -1,0 +1,8 @@
+# Dossiers à ignorer
+**/node_modules
+**/dist
+**/build
+**/nginx
+
+# Fichiers à ignorer
+*.log

@@ -1,0 +1,36 @@
+<configuration>
+    <!-- Read properties from application.properties -->
+    <property resource="application.properties"/>
+
+    <!-- Console appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/ebanking.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/ebanking.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log levels from application.properties -->
+    <logger name="org.springframework.web" level="${logging.level.org.springframework.web:-INFO}"/>
+    <logger name="org.springframework.security" level="${logging.level.org.springframework.security:-INFO}"/>
+    <logger name="ma.ensa.ebankingver1" level="${logging.level.ma.ensa.ebankingver1:-INFO}"/>
+    <logger name="org.hibernate.SQL" level="${logging.level.org.hibernate.SQL:-INFO}"/>
+    <logger name="org.hibernate.type.descriptor.sql" level="${logging.level.org.hibernate.type.descriptor.sql:-INFO}"/>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

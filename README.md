@@ -106,41 +106,71 @@ public void init() {
 version: '3.8'
 
 services:
+
   postgres:
+  
     image: postgres:17
+    
     environment:
+    
       POSTGRES_USER: postgres
+      
       POSTGRES_PASSWORD: root
+      
       POSTGRES_DB: ebanking
+      
     volumes:
+    
       - pgdata:/var/lib/postgresql/data
+      
       - ./initdb:/docker-entrypoint-initdb.d
+      
     ports:
+    
       - "5432:5432"
 
   elasticsearch:
+  
     image: docker.elastic.co/elasticsearch/elasticsearch:8.10.0
+    
     environment:
+    
       - discovery.type=single-node
+      
       - xpack.security.enabled=false
+      
     ports:
+    
       - "9200:9200"
+      
     volumes:
+    
       - esdata:/usr/share/elasticsearch/data
 
   backend:
+  
     build:
+    
       context: .
+      
       dockerfile: Dockerfile
+      
     ports:
+    
       - "8090:8080"
+      
     depends_on:
+    
       - postgres
+      
       - elasticsearch
 
 volumes:
+
   pgdata:
+  
   esdata:
+  
 ## ☁️ Déploiement sur Azure VM
 
 

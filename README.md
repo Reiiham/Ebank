@@ -189,9 +189,14 @@ ssh azureuser@<IP_PUBLIQUE>
 ### 🐳 Installer Docker & Compose sur la VM
 
 sudo apt update
+
 sudo apt install -y docker.io docker-compose
+
 sudo systemctl enable docker
+
 sudo systemctl start docker
+
+
 📦 Transférer le projet
 
 ### Sur votre machine locale

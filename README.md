@@ -219,10 +219,14 @@ sudo docker-compose up -d
 ### 🔁 Mettre à jour l'application
 
 sudo docker-compose down -v
+
 sudo docker image prune -a
+
 sudo docker-compose build
+
 sudo docker-compose up -d
+
 
 ### 📚 Ressources
 
-  📘 Documentation Azure CLI : https://learn.microsoft.com/fr-fr/cli/azure/install-azure-cli?view=azure-cli-latest
+   📘 Documentation Azure CLI : https://learn.microsoft.com/fr-fr/cli/azure/install-azure-cli?view=azure-cli-latest
